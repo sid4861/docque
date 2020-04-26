@@ -10,6 +10,7 @@ import { createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import authReducer from './store/reducers/auth.js';
 import loginReducer from './store/reducers/login.js';
 import saveQuestionReducer from './store/reducers/question.js';
+import saveAnswerReducer from './store/reducers/answer.js';
 
 import thunk from 'redux-thunk';
 const composeEnhancers =  process.env.NODE_ENV==='development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -17,7 +18,8 @@ const composeEnhancers =  process.env.NODE_ENV==='development' ? window.__REDUX_
 const rootReducer = combineReducers({
     auth: authReducer,
     login: loginReducer,
-    saveQuestion: saveQuestionReducer
+    saveQuestion: saveQuestionReducer,
+    saveAnswer: saveAnswerReducer
 });
 
 const store = createStore(

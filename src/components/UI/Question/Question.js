@@ -3,9 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import classes from './Question.module.css';
-
+import {Link} from 'react-router-dom';
 const Question = (props) => {
     return (
+        <Link to={'/question/'+props.questionKey}>
         <Container style={{marginTop: '10%'}} > 
             <Row >  
                 <Col md={10} className={classes.Question}  >{props.title} </Col>
@@ -18,7 +19,7 @@ const Question = (props) => {
                 <Col className={classes.Tag} > Tag: {props.tag}</Col>
             </Row>    
         </Container>
-        
+        </Link>
     );
 }
 
