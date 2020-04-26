@@ -18,7 +18,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -43,7 +43,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -67,7 +67,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -91,7 +91,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -115,7 +115,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -139,7 +139,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -162,7 +162,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -186,7 +186,7 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push(response.data[key]);
+                    responseArray.push({...response.data[key], key: key});
                 });
                 console.log('response array');
                 console.log(responseArray);
@@ -219,10 +219,12 @@ class Questions extends Component {
 
                         let responseArray = [];
                         Object.keys(response.data).map((key) => {
-                            responseArray.push(response.data[key]);
+                            responseArray.push({...response.data[key], key: key});
                         });
                         console.log('response array');
+                        console.log('-------------------------');
                         console.log(responseArray);
+                        console.log('-------------------------');
                         let responseArraySorted = _.sortBy(responseArray, 'date');
                         console.log('response array sorted');
                         console.log(responseArraySorted);
@@ -330,6 +332,8 @@ class Questions extends Component {
         questionsVariable = this.state.questions.map(question => {
             return (
                 <Question
+                    key={question.key}
+                    questionKey = {question.key}
                     title={question.question}
                     noa={question.noOfAnswers}
                     tag={question.tag}

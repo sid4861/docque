@@ -6,6 +6,9 @@ import Login from './containers/Auth/Login/Login.js';
 import HomePage from './containers/HomePage/HomePage.js';
 import Logout from './containers/Auth/Logout/Logout.js';
 import AddQuestion from './containers/AddQuestion/AddQuestion.js';
+import AddAnswer from './containers/AddAnswer/AddAnswer.js';
+import QuestionPage from './containers/QuestionPage/QuestionPage.js';
+
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -30,6 +33,9 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/add/question" component={AddQuestion} />
+          <Route path="/question/:id/add/answer" exact component={AddAnswer} />
+          <Route path="/question/:id" component={QuestionPage} />
+          
         </Switch>
         );
       }
