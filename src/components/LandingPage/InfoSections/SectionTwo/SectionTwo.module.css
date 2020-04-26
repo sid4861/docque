@@ -1,0 +1,80 @@
+.ImageOne{
+    position: absolute;
+width: 500px;
+height: 333px;
+left: 20%;
+top: 90%;
+}
+
+.TextOne{
+    position: absolute;
+width: 345px;
+height: 120px;
+left: 60%;
+top: 100%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+
+text-align: center;
+
+color: #000000;
+}
+
+.ImageTwo{
+    position: absolute;
+width: 500px;
+height: 333px;
+left: 60%;
+top: 130%;
+}
+
+.TextTwo{
+    position: absolute;
+width: 345px;
+height: 120px;
+left: 25%;
+top: 140%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+
+text-align: center;
+
+color: #000000;
+}
+
+.ImageThree{
+    position: absolute;
+width: 500px;
+height: 333px;
+left: 20%;
+top: 170%;
+}
+
+.TextThree{
+    position: absolute;
+width: 345px;
+height: 120px;
+left: 61%;
+top: 180%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+
+text-align: center;
+
+color: #000000;
+}

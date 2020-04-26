@@ -1,0 +1,29 @@
+.SectionOne{
+    position: absolute;
+width: 501px;
+height: 60px;
+left: 39%;
+top: 58%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+
+text-align: center;
+
+color: #000000;
+}
+
+.Divider{
+    position: absolute;
+width: 356px;
+height: 10px;
+left: 43%;
+top: 68%;
+
+background-color: #FBAB7E;
+border-radius: 10px;
+}

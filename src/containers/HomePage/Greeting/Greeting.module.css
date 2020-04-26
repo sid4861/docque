@@ -1,0 +1,17 @@
+.Greeting{
+    width: 290px;
+height: 40px;
+margin-top: 4%;
+margin-left: 4%;
+
+font-family: Domine;
+font-style: normal;
+font-weight: bold;
+font-size: 35px;
+line-height: 40px;
+/* identical to box height */
+
+
+color: #000000;
+
+}
