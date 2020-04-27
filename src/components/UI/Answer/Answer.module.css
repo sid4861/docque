@@ -1,8 +1,8 @@
 .Answer{
     font-family: Roboto;
 font-style: normal;
-font-weight: normal;
-font-size: 15px;
+font-weight: bolder;
+font-size: 20px;
 line-height: 18px;
 
 color: rgba(0, 0, 0, 0.7);
@@ -47,4 +47,14 @@ font-size: 12px;
 line-height: 14px;
 /* identical to box height */
 color: #6B6B7E;
+}
+
+.AddComment{
+    font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 13px;
+line-height: 15px;
+
+color: #FBAB7E;
 }
