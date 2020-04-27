@@ -52,12 +52,16 @@ class Answers extends Component{
         let ans = <p>Loading...</p>
 
         if(this.state.answers.length > 0){
+            console.log('list of answers for this question');
+            console.log(this.state.answers);
             ans = this.state.answers.map((answer) => {
                 return(
                     <Answer 
                     title={answer.answer}
                     noi={answer.noOfInsightfuls}
                     date={answer.date}
+                    answerKey = {answer.key}
+                    questionId = {this.props.questionId}
                     />
                 );
             });

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import classes from './Answer.module.css';
+import {Link} from 'react-router-dom';
 
 const Answer = (props) => {
     return (
@@ -13,6 +14,7 @@ const Answer = (props) => {
             </Row>
 
             <Row style={{ marginTop: '3%' }}>
+            <Link to={'/question/'+props.questionId+'/answer/'+props.answerKey+'/add/comment'} > <Col md={2} className={classes.AddComment} >comment</Col> </Link> 
                 <Col className={classes.Date} >{new Date(props.date).toDateString()}</Col>
             </Row>
         </Container>
