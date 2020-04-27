@@ -7,7 +7,10 @@ import {Link} from 'react-router-dom';
 const Question = (props) => {
     return (
         <Link to={'/question/'+props.questionKey}>
-        <Container style={{marginTop: '10%'}} > 
+        <Container style={{marginTop: '4%', 
+     background: '#FFFFFF',
+     boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
+     padding: '30px'}} > 
             <Row >  
                 <Col md={10} className={classes.Question}  >{props.title} </Col>
                 <Col md={2} className={classes.Date} >{new Date(props.date).toDateString()}</Col>
@@ -17,7 +20,8 @@ const Question = (props) => {
                 <Col className={classes.Noa} >Number of answers: {props.noa}</Col>
                 <Col className={classes.Noi} >No. of people who find this insightful: {props.noi}</Col>
                 <Col className={classes.Tag} > Tag: {props.tag}</Col>
-            </Row>    
+            </Row>
+                
         </Container>
         </Link>
     );

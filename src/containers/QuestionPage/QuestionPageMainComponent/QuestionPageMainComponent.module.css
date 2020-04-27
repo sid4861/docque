@@ -2,7 +2,7 @@
     width: 532px;
 height: 38px;
 
-font-family: Roboto;
+
 font-style: normal;
 font-weight: normal;
 font-size: 40px;
@@ -13,7 +13,7 @@ color: #000000;
 }
 
 .Date{
-    font-family: Roboto;
+    
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
@@ -23,7 +23,7 @@ color: #6B6B7E;
 }
 
 .Noa{
-    font-family: Roboto;
+    
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
@@ -33,7 +33,7 @@ color: #6B6B7E;
 }
 
 .Noi{
-    font-family: Roboto;
+    
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
@@ -43,7 +43,7 @@ color: #6B6B7E;
 }
 
 .Tag{
-    font-family: Roboto;
+    
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
@@ -53,7 +53,7 @@ color: #6B6B7E;
 }
 
 .AnswerQuestion{
-    font-family: Roboto;
+    
 font-style: normal;
 font-weight: bold;
 font-size: 13px;
@@ -66,7 +66,7 @@ color: #FBAB7E;
     width: 1200px;
 height: 0px;
 margin-left: 20%;
-margin-top: 4%;
+margin-top: 2%;
 border: 1px solid #6B6B7E;
 transform: rotate(-0.08deg);
 }

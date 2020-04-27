@@ -1,0 +1,17 @@
+.Content{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 15px;
+    
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.Date{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+    justify-content: end;
+    color: rgba(0, 0, 0, 0.7);
+}
