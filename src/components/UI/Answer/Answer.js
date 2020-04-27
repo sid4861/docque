@@ -4,8 +4,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import classes from './Answer.module.css';
 import {Link} from 'react-router-dom';
+import Comments from './Comments/Comments.js';
 
 const Answer = (props) => {
+    
+    console.log(props.commentsFromAnswers);
     return (
         <Container style={{ marginTop: '10%' }} >
             <Row >
@@ -17,6 +20,10 @@ const Answer = (props) => {
             <Link to={'/question/'+props.questionId+'/answer/'+props.answerKey+'/add/comment'} > <Col md={2} className={classes.AddComment} >comment</Col> </Link> 
                 <Col className={classes.Date} >{new Date(props.date).toDateString()}</Col>
             </Row>
+            <p style={{ marginTop: '3%' }} className={classes.CommentsHeading} >Comments</p>
+            <Container style={{ marginTop: '10%' }} >
+                <Comments commentsFromAnswer={props.commentsFromAnswers} />
+            </Container>
         </Container>
     );
 }

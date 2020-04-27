@@ -55,6 +55,7 @@ class Answers extends Component{
             console.log('list of answers for this question');
             console.log(this.state.answers);
             ans = this.state.answers.map((answer) => {
+                console.log(answer.comments);
                 return(
                     <Answer 
                     title={answer.answer}
@@ -62,6 +63,8 @@ class Answers extends Component{
                     date={answer.date}
                     answerKey = {answer.key}
                     questionId = {this.props.questionId}
+                    userId = {answer.userId}
+                    commentsFromAnswers = {answer.comments}
                     />
                 );
             });

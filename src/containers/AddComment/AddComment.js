@@ -5,7 +5,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index.js';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 class AddComment extends Component{
 
@@ -32,7 +32,7 @@ class AddComment extends Component{
        const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
         console.log(this.state);
-        let addedComment = {
+        let addedComment ={
             comment: this.state.comment,
             userId: userId,
             date: (Date(Date.now())).toString(),
@@ -40,9 +40,11 @@ class AddComment extends Component{
         console.log(addedComment);
     
             this.props.onSaveComment(addedComment, token, this.props.match.params.id);
+            this.props.history.push('/question/'+this.props.match.params.questionId);
     }
 
     render(){
+        console.log('answer key - '+this.props.match.params.id+' question key : '+this.props.match.params.questionId);
         let addComment = null;
         this.props.onAuthCheckState();
         if(localStorage.getItem('token')){
@@ -63,9 +65,9 @@ class AddComment extends Component{
         else{
             addComment = <Redirect to='/' />
         }
-            if(this.props.savedComment){
-                addComment = <Redirect to={'/question/'+this.props.match.params.questionId} />
-            }
+            // if(this.props.savedComment){
+            //     addComment = <Redirect to={'/question/'+this.props.match.params.questionId} />
+            // }
 
         return (
             addComment

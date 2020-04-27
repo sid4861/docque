@@ -34,7 +34,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/add/question" component={AddQuestion} />
-          <Route path='/question/:questionId/answer/:id/add/comment' component={AddComment}/>
+          <Route path='/question/:questionId/answer/:id/add/comment' exact component={AddComment}/>
           <Route path="/question/:id/add/answer" exact component={AddAnswer} />
           <Route path="/question/:id" component={QuestionPage} />
           
