@@ -59,7 +59,7 @@ export const saveComment = (addedComment, token, answerId) => {
     console.log(addedCommentLocal);
     return(
         (dispatch)  => {
-            AxiosInstance.patch('/answers/'+answerId+'/comments'+'.json?auth='+token, addedCommentLocal)
+            AxiosInstance.post('/answers/'+answerId+'/comments'+'.json?auth='+token, addedCommentLocal)
             .then(response => {
                 console.log(response);
                 dispatch(saveCommentSuccess(response));
