@@ -42,6 +42,7 @@ class AddAnswer extends Component{
         console.log(addedAnswer);
     
             this.props.onSaveAnswer(addedAnswer, token);
+            this.props.history.push('/question/'+this.props.match.params.id);
     }
 
     render(){
@@ -65,9 +66,9 @@ class AddAnswer extends Component{
         else{
             addAnswer = <Redirect to='/' />
         }
-            if(this.props.savedAnswer){
-                addAnswer = <Redirect to={'/question/'+this.props.match.params.id} />
-            }
+            // if(this.props.savedAnswer){
+            //     addAnswer = <Redirect to={'/question/'+this.props.match.params.id} />
+            // }
 
         return (
             addAnswer
