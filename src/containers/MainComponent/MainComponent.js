@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Questions from './Questions/Questions.js';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 class MainComponent extends Component {
 
@@ -16,7 +17,8 @@ class MainComponent extends Component {
             yourAnswers: null
         },
 
-        dataSort: 'Recent'
+        dataSort: 'Recent',
+        tag: null
     };
 
     // for filter dropdown
@@ -28,6 +30,17 @@ class MainComponent extends Component {
                 dataSort: event.target.text
             });
     };
+
+    // for tag filter
+
+    onTagClickHandler = (event) => {
+        console.log(event.target.text);
+        this.setState({
+            ...this.state,
+            tag: event.target.text
+        });
+};
+
 
     // for buttons
 
@@ -64,9 +77,9 @@ class MainComponent extends Component {
         });
         console.log(dataFilterProp);
         console.log(this.state.dataSort);
-        let questionsVariable = <Questions dataFilter= 'yourQuestions' dataSort={this.state.dataSort} />; 
+        let questionsVariable = <Questions dataFilter= 'yourQuestions' dataSort={this.state.dataSort}  tagFilter={this.state.tag} />; 
         if(dataFilterProp[0] === 'browseQuestions'){
-            questionsVariable = <Questions dataFilter= 'browseQuestions' dataSort={this.state.dataSort} />;
+            questionsVariable = <Questions dataFilter= 'browseQuestions' dataSort={this.state.dataSort}  tagFilter={this.state.tag} />;
         }
         return (
             <div>
@@ -75,6 +88,7 @@ class MainComponent extends Component {
                         <Col><Button variant="warning" onClick={(event) => { this.onSelectHandler(event, 'Browse Questions') }} >Browse Questions </Button></Col>
                         <Col><Button variant="warning" onClick={(event) => { this.onSelectHandler(event, 'Your Questions') }} >Your Questions</Button></Col>
                         <Col><Button variant="warning">Your Answers</Button></Col>
+                        <ButtonGroup>
                         <Col>
                             <DropdownButton style={{ float: 'left', width: '50%' }} variant="warning" title="Filter" style={{ marginTop: '3%', marginLeft: '-46%' }} >
                                 <Dropdown.Item id="Recent" onClick={(event) => { this.onClickHandler(event) }}>Recent</Dropdown.Item>
@@ -82,8 +96,16 @@ class MainComponent extends Component {
                                 <Dropdown.Item id="Most Answers" onClick={(event) => { this.onClickHandler(event) }} >Most Answers</Dropdown.Item>
                                 <Dropdown.Item id="Most insightful" onClick={(event) => { this.onClickHandler(event) }}>Most Insightful</Dropdown.Item>
                             </DropdownButton>
-
                         </Col>
+                        <Col>
+                            <DropdownButton style={{ float: 'left', width: '50%' }} variant="warning" title="Tag" style={{ marginTop: '3%', marginLeft: '-86%' }} >
+                            <Dropdown.Item id="Ophthalmology" onClick={(event) => { this.onTagClickHandler(event) }}>All</Dropdown.Item>
+                                <Dropdown.Item id="Ophthalmology" onClick={(event) => { this.onTagClickHandler(event) }}>Ophthalmology</Dropdown.Item>
+                                <Dropdown.Item id="Cardiology" onClick={(event) => { this.onTagClickHandler(event) }} >Cardiology</Dropdown.Item>
+                                <Dropdown.Item id="ENT" onClick={(event) => { this.onTagClickHandler(event) }} >ENT</Dropdown.Item>
+                            </DropdownButton>
+                        </Col>
+                        </ButtonGroup>
                     </Row>
 
                 </Container>
