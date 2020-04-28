@@ -9,7 +9,34 @@ class Questions extends Component {
 
     state = { questions: [] }; // before {questions: {}}
 
-    yourQuestionsRecent = (token, userId) => {
+    // yourQuestionsRecent = (token, userId) => {
+
+    //     const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'date');
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+    //     );
+
+    // };
+
+     //with tag
+
+     yourQuestionsOlderWithTag = (token, userId, tag) => {
 
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios.get('/questions.json' + queryParams).then(
@@ -18,23 +45,55 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+                    responseArray.push({ ...response.data[key], key: key });
                 });
                 console.log('response array');
                 console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'date');
-                console.log('response array sorted');
-                console.log(responseArraySorted);
-                this.setState({
-                    ...this.state,
-                    questions: responseArraySorted
-                });
+                let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
             }
         );
 
     };
 
-    yourQuestionsOlder = (token, userId) => {
+
+    //with tag
+
+    yourQuestionsRecentWithTag = (token, userId, tag) => {
 
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios.get('/questions.json' + queryParams).then(
@@ -43,47 +102,112 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
-                });
-                console.log('response array');
-                console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
-                console.log('response array sorted');
-                console.log(responseArraySorted);
-                this.setState({
-                    ...this.state,
-                    questions: responseArraySorted
-                });
-            }
-        );
-
-    };
-
-    browseQuestionsRecent = (token) => {
-        const queryParams = '?auth=' + token;
-        axios.get('/questions.json' + queryParams).then(
-            response => {
-                console.log('reading questions');
-                console.log(response);
-                let responseArray = [];
-                Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+                    responseArray.push({ ...response.data[key], key: key });
                 });
                 console.log('response array');
                 console.log(responseArray);
                 let responseArraySorted = _.sortBy(responseArray, 'date');
-                console.log('response array sorted');
-                console.log(responseArraySorted);
-                this.setState({
-                    ...this.state,
-                    questions: responseArraySorted
-                });
-            }
+                // console.log('response array sorted');
+                // console.log(responseArraySorted);
+                // this.setState({
+                //     ...this.state,
+                //     questions: responseArraySorted
+                // });
 
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
+
+            }
         );
+
     };
 
-    browseQuestionsOlder = (token) => {
+    // yourQuestionsOlder = (token, userId) => {
+
+    //     const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+    //     );
+
+    // };
+
+   
+    // browseQuestionsRecent = (token) => {
+    //     const queryParams = '?auth=' + token;
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'date');
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+
+    //     );
+    // };
+
+    //with tag
+
+    browseQuestionsRecentWithTag = (token, tag) => {
         const queryParams = '?auth=' + token;
         axios.get('/questions.json' + queryParams).then(
             response => {
@@ -91,23 +215,176 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+                    responseArray.push({ ...response.data[key], key: key });
+                });
+                console.log('response array');
+                console.log(responseArray);
+                let responseArraySorted = _.sortBy(responseArray, 'date');
+                // console.log('response array sorted');
+                // console.log(responseArraySorted);
+                // this.setState({
+                //     ...this.state,
+                //     questions: responseArraySorted
+                // });
+
+                
+                
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
+            }
+
+        );
+    };
+
+    // browseQuestionsOlder = (token) => {
+    //     const queryParams = '?auth=' + token;
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+
+    //     );
+    // };
+
+    // with tag
+
+    browseQuestionsOlderWithTag = (token, tag) => {
+        const queryParams = '?auth=' + token;
+        axios.get('/questions.json' + queryParams).then(
+            response => {
+                console.log('reading questions');
+                console.log(response);
+                let responseArray = [];
+                Object.keys(response.data).map((key) => {
+                    responseArray.push({ ...response.data[key], key: key });
                 });
                 console.log('response array');
                 console.log(responseArray);
                 let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
-                console.log('response array sorted');
-                console.log(responseArraySorted);
-                this.setState({
-                    ...this.state,
-                    questions: responseArraySorted
-                });
+                // console.log('response array sorted');
+                // console.log(responseArraySorted);
+                // this.setState({
+                //     ...this.state,
+                //     questions: responseArraySorted
+                // });
+
+                
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
+
             }
 
         );
     };
 
-    browseQuestionsMostAnswers = (token) => {
+    // browseQuestionsMostAnswers = (token) => {
+    //     const queryParams = '?auth=' + token;
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'noOfAnswers').reverse();
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+
+    //     );
+    // };
+
+    //with tag
+
+    
+    browseQuestionsMostAnswersWithTag = (token, tag) => {
         const queryParams = '?auth=' + token;
         axios.get('/questions.json' + queryParams).then(
             response => {
@@ -115,23 +392,64 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+                    responseArray.push({ ...response.data[key], key: key });
                 });
                 console.log('response array');
                 console.log(responseArray);
                 let responseArraySorted = _.sortBy(responseArray, 'noOfAnswers').reverse();
                 console.log('response array sorted');
-                console.log(responseArraySorted);
-                this.setState({
-                    ...this.state,
-                    questions: responseArraySorted
-                });
+                // console.log(responseArraySorted);
+                // this.setState({
+                //     ...this.state,
+                //     questions: responseArraySorted
+                // });
+
+                
+                
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
             }
 
         );
     };
 
-    yourQuestionsMostAnswers = (token, userId) => {
+
+    //with tag
+
+    yourQuestionsMostAnswersWithTag = (token, userId, tag) => {
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios.get('/questions.json' + queryParams).then(
             response => {
@@ -139,22 +457,112 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+                    responseArray.push({ ...response.data[key], key: key });
                 });
                 console.log('response array');
                 console.log(responseArray);
                 let responseArraySorted = _.sortBy(responseArray, 'noOfAnswers').reverse();
-                console.log('response array sorted');
-                console.log(responseArraySorted);
-                this.setState({
-                    ...this.state,
-                    questions: responseArraySorted
-                });
+                // console.log('response array sorted');
+                // console.log(responseArraySorted);
+                // this.setState({
+                //     ...this.state,
+                //     questions: responseArraySorted
+                // });
+
+                
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
+
             }
         );
     };
 
-    browseQuestionsMostInsightfuls = (token) => {
+
+
+    // yourQuestionsMostAnswers = (token, userId) => {
+    //     const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'noOfAnswers').reverse();
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+    //     );
+    // };
+
+    // browseQuestionsMostInsightfuls = (token) => {
+    //     const queryParams = '?auth=' + token;
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'noOfInsightfuls').reverse();
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+
+    //     );
+    // };
+
+    //with tag
+
+    
+    browseQuestionsMostInsightfulsWithTag = (token, tag) => {
         const queryParams = '?auth=' + token;
         axios.get('/questions.json' + queryParams).then(
             response => {
@@ -162,11 +570,115 @@ class Questions extends Component {
                 console.log(response);
                 let responseArray = [];
                 Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+                    responseArray.push({ ...response.data[key], key: key });
                 });
                 console.log('response array');
                 console.log(responseArray);
                 let responseArraySorted = _.sortBy(responseArray, 'noOfInsightfuls').reverse();
+                // console.log('response array sorted');
+                // console.log(responseArraySorted);
+                // this.setState({
+                //     ...this.state,
+                //     questions: responseArraySorted
+                // });
+
+                
+                if (tag === null || tag === undefined) {
+
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+
+                }
+                else if (tag === 'All') {
+                    console.log('response array sorted');
+                    console.log(responseArraySorted);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySorted
+                    });
+                }
+
+                else {
+                    let responseArraySortedTagFiltered = [];
+                    responseArraySorted.forEach((element) => {
+                        if (element.tag === tag) {
+                            responseArraySortedTagFiltered.push(element);
+                        }
+                    });
+
+                    console.log('responseArraySortedTagFiltered');
+                    console.log(responseArraySortedTagFiltered);
+                    this.setState({
+                        ...this.state,
+                        questions: responseArraySortedTagFiltered
+                    });
+                }
+
+            }
+
+        );
+    };    
+
+    // yourQuestionsMostInsightfuls = (token, userId) => {
+    //     const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+    //     axios.get('/questions.json' + queryParams).then(
+    //         response => {
+    //             console.log('reading questions');
+    //             console.log(response);
+    //             let responseArray = [];
+    //             Object.keys(response.data).map((key) => {
+    //                 responseArray.push({ ...response.data[key], key: key });
+    //             });
+    //             console.log('response array');
+    //             console.log(responseArray);
+    //             let responseArraySorted = _.sortBy(responseArray, 'noOfInsightfuls').reverse();
+    //             console.log('response array sorted');
+    //             console.log(responseArraySorted);
+    //             this.setState({
+    //                 ...this.state,
+    //                 questions: responseArraySorted
+    //             });
+    //         }
+    //     );
+    // };
+
+// with tag
+yourQuestionsMostInsightfulsWithTag = (token, userId, tag) => {
+    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+    axios.get('/questions.json' + queryParams).then(
+        response => {
+            console.log('reading questions');
+            console.log(response);
+            let responseArray = [];
+            Object.keys(response.data).map((key) => {
+                responseArray.push({ ...response.data[key], key: key });
+            });
+            console.log('response array');
+            console.log(responseArray);
+            let responseArraySorted = _.sortBy(responseArray, 'noOfInsightfuls').reverse();
+            // console.log('response array sorted');
+            // console.log(responseArraySorted);
+            // this.setState({
+            //     ...this.state,
+            //     questions: responseArraySorted
+            // });
+
+            
+            if (tag === null || tag === undefined) {
+
+                console.log('response array sorted');
+                console.log(responseArraySorted);
+                this.setState({
+                    ...this.state,
+                    questions: responseArraySorted
+                });
+
+            }
+            else if (tag === 'All') {
                 console.log('response array sorted');
                 console.log(responseArraySorted);
                 this.setState({
@@ -175,32 +687,26 @@ class Questions extends Component {
                 });
             }
 
-        );
-    };
-
-    yourQuestionsMostInsightfuls = (token, userId) => {
-        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
-        axios.get('/questions.json' + queryParams).then(
-            response => {
-                console.log('reading questions');
-                console.log(response);
-                let responseArray = [];
-                Object.keys(response.data).map((key) => {
-                    responseArray.push({...response.data[key], key: key});
+            else {
+                let responseArraySortedTagFiltered = [];
+                responseArraySorted.forEach((element) => {
+                    if (element.tag === tag) {
+                        responseArraySortedTagFiltered.push(element);
+                    }
                 });
-                console.log('response array');
-                console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'noOfInsightfuls').reverse();
-                console.log('response array sorted');
-                console.log(responseArraySorted);
+
+                console.log('responseArraySortedTagFiltered');
+                console.log(responseArraySortedTagFiltered);
                 this.setState({
                     ...this.state,
-                    questions: responseArraySorted
+                    questions: responseArraySortedTagFiltered
                 });
             }
-        );
-    };
 
+
+        }
+    );
+};
 
     componentDidMount() {
         console.log('inside componentDidMount')
@@ -219,7 +725,7 @@ class Questions extends Component {
 
                         let responseArray = [];
                         Object.keys(response.data).map((key) => {
-                            responseArray.push({...response.data[key], key: key});
+                            responseArray.push({ ...response.data[key], key: key });
                         });
                         console.log('response array');
                         console.log('-------------------------');
@@ -255,31 +761,35 @@ class Questions extends Component {
                 let token = localStorage.getItem('token');
                 if (this.props.dataFilter === 'browseQuestions') {
                     if (this.props.dataSort === 'Older') {
-                        this.browseQuestionsOlder(token);
+                        // trying tag
+                        this.browseQuestionsOlderWithTag(token, this.props.tagFilter);
                     }
-                    else if(this.props.dataSort === 'Recent') {
-                        this.browseQuestionsRecent(token);
+                    else if (this.props.dataSort === 'Recent') {
+                        //trying tag
+                        this.browseQuestionsRecentWithTag(token, this.props.tagFilter);
                     }
-                    else if(this.props.dataSort === 'Most Answers') {
-                        this.browseQuestionsMostAnswers(token);
+                    else if (this.props.dataSort === 'Most Answers') {
+                        //trying tag
+                        this.browseQuestionsMostAnswersWithTag(token, this.props.tagFilter);
                     }
-                    else if(this.props.dataSort === 'Most Insightful') {
-                        this.browseQuestionsMostInsightfuls(token);
+                    else if (this.props.dataSort === 'Most Insightful') {
+                        //trying tag
+                        this.browseQuestionsMostInsightfulsWithTag(token, this.props.tagFilter);
                     }
 
                 }
                 else if (this.props.dataFilter === 'yourQuestions') {
                     if (this.props.dataSort === 'Older') {
-                        this.yourQuestionsOlder(token, userId);
+                        this.yourQuestionsOlderWithTag(token, userId, this.props.tagFilter);
                     }
-                    else if(this.props.dataSort === 'Recent'){
-                        this.yourQuestionsRecent(token, userId);
+                    else if (this.props.dataSort === 'Recent') {
+                        this.yourQuestionsRecentWithTag(token, userId, this.props.tagFilter);
                     }
-                    else if(this.props.dataSort === 'Most Answers') {
-                        this.yourQuestionsMostAnswers(token, userId);
+                    else if (this.props.dataSort === 'Most Answers') {
+                        this.yourQuestionsMostAnswersWithTag(token, userId, this.props.tagFilter);
                     }
-                    else if(this.props.dataSort === 'Most Insightful') {
-                        this.yourQuestionsMostInsightfuls(token, userId);
+                    else if (this.props.dataSort === 'Most Insightful') {
+                        this.yourQuestionsMostInsightfulsWithTag(token, userId, this.props.tagFilter);
                     }
                 }
             }
@@ -291,34 +801,39 @@ class Questions extends Component {
                 let userId = localStorage.getItem('userId');
                 let token = localStorage.getItem('token');
 
-                if (this.props.dataSort === 'Older' && this.props.dataSort !== prevProps.dataSort) {
+                if ((this.props.dataSort === 'Older' && this.props.dataSort !== prevProps.dataSort) || ((this.props.dataSort === 'Older') && (this.props.tagFilter !== null) && (this.props.tagFilter !== prevProps.tagFilter))) {
                     if (this.props.dataFilter === 'browseQuestions') {
-                        this.browseQuestionsOlder(token);
+                        //trying tag
+                        this.browseQuestionsOlderWithTag(token, this.props.tagFilter);
                     } else {
-                        this.yourQuestionsOlder(token, userId);
+                        // trying tag filter on this
+                        this.yourQuestionsOlderWithTag(token, userId, this.props.tagFilter);
                     }
                 }
-                else if (this.props.dataSort === 'Recent' && this.props.dataSort !== prevProps.dataSort) {
+                else if ((this.props.dataSort === 'Recent' && this.props.dataSort !== prevProps.dataSort) ||  ((this.props.dataSort === 'Recent') && (this.props.tagFilter !== null) && (this.props.tagFilter !== prevProps.tagFilter))) {
                     if (this.props.dataFilter === 'browseQuestions') {
-                        this.browseQuestionsRecent(token);
+                        this.browseQuestionsRecentWithTag(token, this.props.tagFilter);
                     } else {
-                        this.yourQuestionsRecent(token, userId);
-                    }
-                }
-
-                else if (this.props.dataSort === 'Most Answers' && this.props.dataSort !== prevProps.dataSort) {
-                    if (this.props.dataFilter === 'browseQuestions') {
-                        this.browseQuestionsMostAnswers(token);
-                    } else {
-                        this.yourQuestionsMostAnswers(token, userId);
+                        //// trying tag filter on this
+                        this.yourQuestionsRecentWithTag(token, userId, this.props.tagFilter);
                     }
                 }
 
-                else if (this.props.dataSort === 'Most Insightful' && this.props.dataSort !== prevProps.dataSort) {
+                else if ((this.props.dataSort === 'Most Answers' && this.props.dataSort !== prevProps.dataSort) ||  ((this.props.dataSort === 'Most Answers') && (this.props.tagFilter !== null) && (this.props.tagFilter !== prevProps.tagFilter))) {
                     if (this.props.dataFilter === 'browseQuestions') {
-                        this.browseQuestionsMostInsightfuls(token);
+                        this.browseQuestionsMostAnswersWithTag(token, this.props.tagFilter);
                     } else {
-                        this.yourQuestionsMostInsightfuls(token, userId);
+                        // trying tag
+                        this.yourQuestionsMostAnswersWithTag(token, userId, this.props.tagFilter);
+                    }
+                }
+
+                else if ((this.props.dataSort === 'Most Insightful' && this.props.dataSort !== prevProps.dataSort) ||  ((this.props.dataSort === 'Most Insightful') && (this.props.tagFilter !== null) && (this.props.tagFilter !== prevProps.tagFilter)) ) {
+                    if (this.props.dataFilter === 'browseQuestions') {
+                        this.browseQuestionsMostInsightfulsWithTag(token, this.props.tagFilter);
+                    } else {
+                        //trying tag
+                        this.yourQuestionsMostInsightfulsWithTag(token, userId, this.props.tagFilter);
                     }
                 }
 
@@ -333,7 +848,7 @@ class Questions extends Component {
             return (
                 <Question
                     key={question.key}
-                    questionKey = {question.key}
+                    questionKey={question.key}
                     title={question.question}
                     noa={question.noOfAnswers}
                     tag={question.tag}
