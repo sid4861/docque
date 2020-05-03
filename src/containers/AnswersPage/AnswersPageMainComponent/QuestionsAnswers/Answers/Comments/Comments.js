@@ -12,7 +12,7 @@ class Comments extends Component {
         let comments = null;
         if(this.state.comments !== undefined){
              comments =  Object.keys(this.state.comments).map((key) => {
-                return (<Comment content = {this.state.comments[key].comment} date = {this.state.comments[key].date}  />);
+                return (<Comment content = {this.state.comments[key].comment} date = {this.state.comments[key].date} userId={this.state.comments[key].userId} />);
                 
             });
         }

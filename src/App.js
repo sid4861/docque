@@ -10,7 +10,7 @@ import AddAnswer from './containers/AddAnswer/AddAnswer.js';
 import AddComment from './containers/AddComment/AddComment.js';
 import QuestionPage from './containers/QuestionPage/QuestionPage.js';
 import AnswersPage from './containers/AnswersPage/AnswersPage.js';
-
+import UserProfile from './containers/UserProfile/UserProfile';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -38,8 +38,8 @@ class App extends Component {
           <Route path='/question/:questionId/answer/:id/add/comment' exact component={AddComment}/>
           <Route path="/question/:id/add/answer" exact component={AddAnswer} />
           <Route path="/question/:id" component={QuestionPage} />
+          <Route path="/userprofile/:id" exact component={UserProfile} />
           <Route path="/:id/answers" exact component={AnswersPage} />
-          
         </Switch>
         );
       }
