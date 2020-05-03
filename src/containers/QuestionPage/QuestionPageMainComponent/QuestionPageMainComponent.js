@@ -7,6 +7,8 @@ import {withRouter, Link} from 'react-router-dom';
 import axios from '../../../hoc/axios/instance.js';
 import classes from './QuestionPageMainComponent.module.css';
 import Answers from './Answers/Answers.js';
+import * as actions from '../../../store/actions/index.js';
+import {connect} from 'react-redux';
 
 class QuestionPageMainComponent extends Component {
 
@@ -45,6 +47,11 @@ class QuestionPageMainComponent extends Component {
         this.props.history.push('/home');
     }
 
+    insightfulEventHandler = (event) => {
+        console.log('insightful clicked');
+        this.props.onIncrementInsightful(this.props.questionId, this.token);
+    }
+
     render() {
 
         let qpmc = <p>loading</p>
@@ -66,7 +73,7 @@ class QuestionPageMainComponent extends Component {
 
             <Row style={{marginTop: '3%'}}>
                 <Col className={classes.Noa} >Number of answers: {this.state.question.noOfAnswers}</Col>
-                <Col className={classes.Noi} >No. of people who find this insightful: {this.state.question.noOfInsightfuls}</Col>
+                <Col className={classes.Noi} > <a style={{cursor: 'pointer'}} title="Click to mark insightful" onClick={(event) => {this.insightfulEventHandler(event)}} > find this insightful? {this.state.question.noOfInsightfuls} </a> </Col>
                 <Col className={classes.Tag} > Tag: {this.state.question.tag}</Col>
             </Row>
             
@@ -91,4 +98,10 @@ class QuestionPageMainComponent extends Component {
     }
 }
 
-export default withRouter(QuestionPageMainComponent);
+const mapDispatchToProps = (dispatch) => {
+    return({
+        onIncrementInsightful: (questionId, token) => {dispatch(actions.incrementInsightful(questionId, token))}
+    });
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(QuestionPageMainComponent));
