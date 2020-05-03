@@ -1,0 +1,82 @@
+.Answer{
+    
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 18px;
+    
+    color: rgba(0, 0, 0, 0.7);
+    
+    }
+    
+    .Date{
+        
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+    color: #6B6B7E;
+    }
+    
+    .Noa{
+        
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+    color: #6B6B7E;
+    }
+    
+    .Noi{
+        
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+    color: #6B6B7E;
+    }
+    
+    .Tag{
+        
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+    color: #6B6B7E;
+    }
+    
+    .AddComment{
+        font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 15px;
+    border: 1px solid #FBAB7E;
+    border-radius: 5px;
+    color: #FBAB7E;
+    }
+    
+    .CommentsHeading{
+        width: 64px;
+    height: 15px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 15px;
+    
+    color: #6B6B7E;
+    
+    }
+    
+    .Divider{
+        width: 1230px;
+    height: 0px;
+    margin-left: -3%;
+    margin-top: 5%;
+    border: 1px solid #6B6B7E;
+    transform: rotate(-0.08deg);
+    }

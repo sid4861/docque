@@ -1,0 +1,58 @@
+.Question{
+    width: 532px;
+height: 38px;
+
+
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+line-height: 19px;
+
+color: #000000;
+
+}
+
+.Date{
+    
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+/* identical to box height */
+color: #6B6B7E;
+}
+
+.Noa{
+    
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+/* identical to box height */
+color: #6B6B7E;
+}
+
+.Noi{
+    
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+/* identical to box height */
+color: #6B6B7E;
+}
+
+.Tag{
+    
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+/* identical to box height */
+color: #6B6B7E;
+}
+
+.Box{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
