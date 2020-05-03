@@ -7,8 +7,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Questions from './Questions/Questions.js';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import {Link} from 'react-router-dom';
 
 class MainComponent extends Component {
+
+    userId = localStorage.getItem('userId');
 
     state = {
         browsingOptions: {
@@ -87,7 +90,7 @@ class MainComponent extends Component {
                     <Row>
                         <Col><Button variant="warning" onClick={(event) => { this.onSelectHandler(event, 'Browse Questions') }} >Browse Questions </Button></Col>
                         <Col><Button variant="warning" onClick={(event) => { this.onSelectHandler(event, 'Your Questions') }} >Your Questions</Button></Col>
-                        <Col><Button variant="warning">Your Answers</Button></Col>
+                         <Link to={this.userId+'/answers'} > <Col><Button variant="warning">Your Answers</Button></Col> </Link> 
                         <ButtonGroup>
                         <Col>
                             <DropdownButton style={{ float: 'left', width: '50%' }} variant="warning" title="Filter" style={{ marginTop: '3%', marginLeft: '-46%' }} >
