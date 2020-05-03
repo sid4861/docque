@@ -10,17 +10,32 @@ import Answers from './Answers/Answers.js';
 
 class QuestionPageMainComponent extends Component {
 
+    token = localStorage.getItem('token');
+
     state = {
         question: null
     };
+
+    firstName = null;
 
     componentDidMount(){
         //this.props.questionId
         let token = localStorage.getItem('token');
         axios.get('/questions/'+this.props.questionId+'.json?auth='+token).then(
             response => {
-                console.log('clicked question');
-                this.setState({...this.state, question: response.data});
+                //console.log('clicked question');
+               let responseData = response.data;
+                let userId = response.data.userId;
+                //console.log('user id from question = '+userId);
+                const queryParams = '?auth=' + this.token + '&orderBy="userID"&equalTo="' + userId + '"';
+                axios.get('/users.json'+queryParams).then(
+                    response => {
+                        this.firstName = response.data[Object.keys(response.data)[0]].firstName;
+                  //      console.log('first name = '+response);
+                        this.setState({...this.state, question: responseData});
+                    }
+                );
+               // this.setState({...this.state, question: response.data});
             }
         );
 
@@ -46,6 +61,7 @@ class QuestionPageMainComponent extends Component {
             <Row >  
                 <Col md={10} className={classes.Question}  >{this.state.question.question} </Col>
                 <Col md={2} className={classes.Date} >{new Date(this.state.question.date).toDateString()}</Col>
+                <Col md={2} className={classes.Date} >Asked by : {this.firstName}</Col>
             </Row>
 
             <Row style={{marginTop: '3%'}}>
