@@ -61,6 +61,18 @@ export const saveAnswer = (addedAnswer, token) => {
         (dispatch)  => {
             AxiosInstance.post('/answers.json?auth='+token, askedAnswerLocal)
             .then(response => {
+                AxiosInstance.get('/questions/'+askedAnswerLocal.questionId+'.json?auth='+token).then(
+                    response => {
+                        console.log(response.data);
+                        let numberOfAnswers = response.data.noOfAnswers;
+                        console.log(numberOfAnswers);
+                        numberOfAnswers += 1;
+                        AxiosInstance.patch('/questions/'+askedAnswerLocal.questionId+'.json?auth='+token, {noOfAnswers: numberOfAnswers});
+                        // console.log(response);
+                        // dispatch(saveAnswerSuccess(response));
+                        // dispatch(saveAnswerToUser(response.data.name, token));
+                    }
+                );
                 console.log(response);
                 dispatch(saveAnswerSuccess(response));
                 dispatch(saveAnswerToUser(response.data.name, token));
