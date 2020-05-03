@@ -56,7 +56,7 @@ class Answer extends Component {
                 <Row >
                     <Col md={1} className={classes.Noi} >No. of people who find this insightful: {this.props.noi}</Col>
                     <Col md={10} className={classes.Answer}  >{this.props.title} </Col>
-                    <Col md={1} className={classes.Noi}  >Answer by: {this.state.firstName} </Col>
+                    <Col md={1} className={classes.Noi}  >Answer by:  <Link to={'/userprofile/'+this.props.userId} >  {this.state.firstName} </Link> </Col>
                 </Row>
 
                 <Row style={{ marginTop: '3%' }}>

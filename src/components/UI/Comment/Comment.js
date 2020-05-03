@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import classes from './Comment.module.css';
 import Axios from '../../../hoc/axios/instance.js';
-
+import {Link} from 'react-router-dom';
 // const Comment = (props) => {
 
 //     return(
@@ -42,7 +42,7 @@ class Comment extends Component {
                 <Container style={{ marginTop: '2%' }}>
                     <Row>
                         <Col className={classes.Content} > {this.props.content}  </Col>
-                        <Col className={classes.Date} >  Comment by:  {this.state.firstName} </Col>
+                        <Col className={classes.Date} >  Comment by: <Link to={'/userprofile/'+this.props.userId} > {this.state.firstName} </Link>  </Col>
                     </Row>
                     <Row className={classes.Date} style={{ marginTop: '1%' }}> {new Date(this.props.date).toDateString()} </Row>
                 </Container>
