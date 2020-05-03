@@ -11,7 +11,7 @@ class AnswersPage extends Component{
             <div>
                 <NavbarComponent />
                 {/* <QuestionPageMainComponent questionId={this.props.match.params.id} token={this.props.token}/> */}
-                <AnswersPageMainComponent />
+                <AnswersPageMainComponent/>
             </div>
         );
 

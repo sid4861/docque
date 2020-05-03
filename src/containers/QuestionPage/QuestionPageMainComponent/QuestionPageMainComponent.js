@@ -17,7 +17,7 @@ class QuestionPageMainComponent extends Component {
     };
 
     firstName = null;
-
+    userId = null;
     componentDidMount(){
         //this.props.questionId
         let token = localStorage.getItem('token');
@@ -25,9 +25,9 @@ class QuestionPageMainComponent extends Component {
             response => {
                 //console.log('clicked question');
                let responseData = response.data;
-                let userId = response.data.userId;
+                this.userId = response.data.userId;
                 //console.log('user id from question = '+userId);
-                const queryParams = '?auth=' + this.token + '&orderBy="userID"&equalTo="' + userId + '"';
+                const queryParams = '?auth=' + this.token + '&orderBy="userID"&equalTo="' + this.userId + '"';
                 axios.get('/users.json'+queryParams).then(
                     response => {
                         this.firstName = response.data[Object.keys(response.data)[0]].firstName;
@@ -61,7 +61,7 @@ class QuestionPageMainComponent extends Component {
             <Row >  
                 <Col md={10} className={classes.Question}  >{this.state.question.question} </Col>
                 <Col md={2} className={classes.Date} >{new Date(this.state.question.date).toDateString()}</Col>
-                <Col md={2} className={classes.Date} >Asked by : {this.firstName}</Col>
+                <Col md={2} className={classes.Date} >Asked by :  <Link to={'/userprofile/'+this.userId} > {this.firstName} </Link> </Col>
             </Row>
 
             <Row style={{marginTop: '3%'}}>
