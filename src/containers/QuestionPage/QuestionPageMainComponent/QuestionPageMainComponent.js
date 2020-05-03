@@ -77,7 +77,7 @@ class QuestionPageMainComponent extends Component {
 
         <div className={classes.Divider}></div>
 
-                <Answers questionId={this.props.questionId}/>
+                <Answers questionId={this.props.questionId} />
 
         </div>
 
