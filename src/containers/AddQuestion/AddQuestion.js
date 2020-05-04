@@ -68,7 +68,7 @@ class AddQuestion extends Component {
                     <FormControl value={this.state.value} onChange={(event) => {this.onChangeHandler(event, 'question')}} as="textarea" aria-label="With textarea" />
                 </InputGroup>
                 <DropdownButton variant="warning" title="Tags" style={{marginTop: '3%', marginLeft: '-46%'}} > 
-                    <Dropdown.Item id="Ophthalmology" onClick={(event) => {this.onClickHandler(event)}}> Ophthalmology</Dropdown.Item>
+                    <Dropdown.Item id="Ophthalmology" onClick={(event) => {this.onClickHandler(event)}}>Ophthalmology</Dropdown.Item>
                     <Dropdown.Item id="Cardiology" onClick={(event) => {this.onClickHandler(event)}} >Cardiology</Dropdown.Item>
                     <Dropdown.Item  id="ENT" onClick={(event) => {this.onClickHandler(event)}} >ENT</Dropdown.Item>
                 </DropdownButton>
