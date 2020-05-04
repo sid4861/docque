@@ -49,7 +49,7 @@ class Questions extends Component {
                 });
                 console.log('response array');
                 console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
+                let responseArraySorted = _.sortBy(responseArray, function(o) {return Date.parse(o.date);});
                 if (tag === null || tag === undefined) {
 
                     console.log('response array sorted');
@@ -106,7 +106,7 @@ class Questions extends Component {
                 });
                 console.log('response array');
                 console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'date');
+                let responseArraySorted = _.sortBy(responseArray, function(o) {return Date.parse(o.date);}).reverse();
                 // console.log('response array sorted');
                 // console.log(responseArraySorted);
                 // this.setState({
@@ -219,7 +219,7 @@ class Questions extends Component {
                 });
                 console.log('response array');
                 console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'date');
+                let responseArraySorted = _.sortBy(responseArray, function(o) {return Date.parse(o.date);}).reverse();
                 // console.log('response array sorted');
                 // console.log(responseArraySorted);
                 // this.setState({
@@ -307,7 +307,7 @@ class Questions extends Component {
                 });
                 console.log('response array');
                 console.log(responseArray);
-                let responseArraySorted = _.sortBy(responseArray, 'date').reverse();
+                let responseArraySorted = _.sortBy(responseArray, function(o) {return Date.parse(o.date);});
                 // console.log('response array sorted');
                 // console.log(responseArraySorted);
                 // this.setState({
@@ -731,7 +731,7 @@ yourQuestionsMostInsightfulsWithTag = (token, userId, tag) => {
                         console.log('-------------------------');
                         console.log(responseArray);
                         console.log('-------------------------');
-                        let responseArraySorted = _.sortBy(responseArray, 'date');
+                        let responseArraySorted = _.sortBy(responseArray, function(o) {return Date.parse(o.date);}).reverse();
                         console.log('response array sorted');
                         console.log(responseArraySorted);
                         ///
