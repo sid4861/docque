@@ -37,7 +37,7 @@ export const checkAuthTimeout = (expirationTime) => {
 };
 
 export const login = (email, password) => {
-    return(
+    return (
         (dispatch) => {
             const authData = {
                 email: email,
@@ -47,19 +47,19 @@ export const login = (email, password) => {
 
             const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBzYmdifMIowrHQgIPejuUzGRRNkMK_6G4';
             axios.post(url, authData)
-            .then(res => {
-                console.log(res);
-                const expirationTime = new Date(new Date().getTime() + res.data.expiresIn * 1000);
-                localStorage.setItem('token', res.data.idToken);
-                localStorage.setItem('expirationTime', expirationTime);
-                localStorage.setItem('userId', res.data.localId);
-                dispatch(loginSuccess(res.data.idToken, res.data.localId));
-                dispatch(checkAuthTimeout(res.data.expiresIn));
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch(loginFail(err.response.data.error));
-            });
+                .then(res => {
+                    console.log(res);
+                    const expirationTime = new Date(new Date().getTime() + res.data.expiresIn * 1000);
+                    localStorage.setItem('token', res.data.idToken);
+                    localStorage.setItem('expirationTime', expirationTime);
+                    localStorage.setItem('userId', res.data.localId);
+                    dispatch(loginSuccess(res.data.idToken, res.data.localId));
+                    dispatch(checkAuthTimeout(res.data.expiresIn));
+                })
+                .catch(err => {
+                    console.log(err);
+                    dispatch(loginFail(err.response.data.error));
+                });
         }
     );
 }
@@ -77,10 +77,21 @@ export const authCheckState = () => {
                 } else {
                     const userId = localStorage.getItem('userId');
                     dispatch(loginSuccess(token, userId));
-                    dispatch(checkAuthTimeout((expirationTime.getTime() - new Date().getTime())/1000));
+                    dispatch(checkAuthTimeout((expirationTime.getTime() - new Date().getTime()) / 1000));
                 }
 
             }
         }
     );
 };
+
+export const forgotPassword = (email) => {
+    return (
+        (dispatch) => {
+            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBzYmdifMIowrHQgIPejuUzGRRNkMK_6G4';
+            let data = { "requestType": "PASSWORD_RESET", "email": email };
+            axios.post(url, data);
+        }
+    );
+
+}
