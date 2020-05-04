@@ -13,6 +13,7 @@ import saveQuestionReducer from './store/reducers/question.js';
 import saveAnswerReducer from './store/reducers/answer.js';
 import saveCommentReducer from './store/reducers/comment.js';
 import incrementInsightfulReducer from './store/reducers/insightful.js';
+import notificationDeleteReducer from './store/reducers/notification.js';
 
 import thunk from 'redux-thunk';
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   saveQuestion: saveQuestionReducer,
   saveAnswer: saveAnswerReducer,
   saveComment: saveCommentReducer,
-  incrementInsightful: incrementInsightfulReducer
+  incrementInsightful: incrementInsightfulReducer,
+  notificationDelete: notificationDeleteReducer
 });
 
 const store = createStore(
