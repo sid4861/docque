@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes.js';
 import axios from 'axios';
 import AxiosInstance from '../../hoc/axios/instance.js';
+import {key} from './key.js';
 
 export const authSuccess = (token, userId) => {
     return ({
@@ -56,7 +57,7 @@ export const auth = (email, password, user) => {
                 returnSecureToken: true
             };
 
-            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBzYmdifMIowrHQgIPejuUzGRRNkMK_6G4';
+            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+key;
             axios.post(url, authData)
                 .then(res => {
                     console.log(res);

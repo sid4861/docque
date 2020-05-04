@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes.js';
 import axios from 'axios';
+import {key} from './key.js';
 
 export const loginSuccess = (token, userId) => {
     return ({
@@ -45,7 +46,7 @@ export const login = (email, password) => {
                 returnSecureToken: true
             };
 
-            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBzYmdifMIowrHQgIPejuUzGRRNkMK_6G4';
+            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+key;
             axios.post(url, authData)
                 .then(res => {
                     console.log(res);
@@ -88,7 +89,7 @@ export const authCheckState = () => {
 export const forgotPassword = (email) => {
     return (
         (dispatch) => {
-            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBzYmdifMIowrHQgIPejuUzGRRNkMK_6G4';
+            const url = 'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key='+key;
             let data = { "requestType": "PASSWORD_RESET", "email": email };
             axios.post(url, data);
         }
