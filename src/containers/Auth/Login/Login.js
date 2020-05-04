@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import LogoImage from '../../../assets/images/doctor-emoji-png-11-transparent.png';
 import * as actions from '../../../store/actions/index.js';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     state = {
@@ -13,14 +13,14 @@ class Login extends Component {
         password: null
     };
 
-    componentDidMount(){
+    componentDidMount() {
         document.body.style.background = 'linear-gradient(90deg, #F7CE68 0%, #FBAB7E 100%), #C4C4C4';
         document.body.style.width = '100%';
         document.body.style.margin = '0';
         document.body.style.height = '100%';
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         document.body.style.background = 'white';
     }
 
@@ -46,7 +46,13 @@ class Login extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.onLogin(this.state.email, this.state.password);
+        if (this.state.email !== null && this.state.password !== null && this.state.password.length >= 6) {
+            this.props.onLogin(this.state.email, this.state.password);
+        }
+        else {
+            alert('wrong info');
+        }
+
     };
 
     render() {
@@ -86,7 +92,7 @@ class Login extends Component {
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label className={classes.Label}>Email</Form.Label>
                         <Form.Control className={classes.Input} onChange={(event) => { this.inputChangedHandler(event, 'email') }} value={this.state.email} type="email" placeholder="email" />
-                        
+
                     </Form.Group>
                     <br />
                     <Form.Group controlId="formBasicPassword">
@@ -107,8 +113,63 @@ class Login extends Component {
 
         if (this.props.error) {
 
-            alert(this.props.error.message);
-           // form = <Redirect to='/login' exact />;
+            form = (
+
+                <div>
+                    <Form onSubmit={this.submitHandler} style={{ width: '100%', height: '100%' }} className={' d-flex' + ' flex-column' + ' align-items-center'} >
+
+
+                        <img src={LogoImage} className={classes.LogoImage} />
+                        <br />
+
+
+                        <p style={{
+
+                            width: '198px',
+                            height: '57px',
+                            fontFamily: 'Domine',
+                            fontStyle: 'normal',
+                            fontWeight: 'bold',
+                            fontSize: '50px',
+                            lineHeight: '57px',
+                            /* identical to box height */
+
+                            letterSpacing: '0.04em',
+                            color: '#FFFFFF',
+
+                            textShadow: '0px 2px 8px rgba(0, 0, 0, 0.25)'
+                        }} >Docque</p>
+
+                        <br />
+
+
+
+
+
+
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label className={classes.Label}>Email</Form.Label>
+                            <Form.Control className={classes.Input} onChange={(event) => { this.inputChangedHandler(event, 'email') }} value={this.state.email} type="email" placeholder="email" />
+
+                        </Form.Group>
+                        <br />
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label className={classes.Label} >Password</Form.Label>
+                            <Form.Control className={classes.Input} onChange={(event) => { this.inputChangedHandler(event, 'password') }} value={this.state.password} type="password" placeholder="Password" />
+                            <p>incorrect password</p>
+                        </Form.Group>
+                        <br /><br />
+                        <Form.Group controlId="formBasicButton">
+                            <button className={classes.Button} type="submit">
+                                LOG IN
+</button>
+                        </Form.Group>
+
+                    </Form>
+                </div>
+
+
+            );
         }
 
         else if (this.props.loggedIn) {
