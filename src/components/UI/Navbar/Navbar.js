@@ -16,11 +16,11 @@ const NavbarComponent = (props) => {
             <Navbar.Brand href="/home"  > <img className={classes.LogoImage} src={LogoImage} />  <span className={classes.LogoText} >Docque</span> </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-
+{/* 
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     <Button variant="outline-success">Search</Button>
-                </Form>
+                </Form> */}
 
 
                 <Nav className="ml-auto">

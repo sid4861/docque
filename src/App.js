@@ -11,10 +11,25 @@ import AddComment from './containers/AddComment/AddComment.js';
 import QuestionPage from './containers/QuestionPage/QuestionPage.js';
 import AnswersPage from './containers/AnswersPage/AnswersPage.js';
 import UserProfile from './containers/UserProfile/UserProfile';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class App extends Component {
+
+  token = localStorage.getItem('token');
+  
+  state = {
+    loggedIn: null
+  }
+
+  componentDidMount(){
+    if(this.token !== null){
+      this.setState({
+        ...this.state,
+        loggedIn: true
+      });
+    }
+  }
 
   render() {
 
@@ -26,9 +41,11 @@ class App extends Component {
       </Switch>
       );
       
-      if(true){ // replace with this.props.loggedIn
+      if(this.state.token !== null){ // replace with this.props.loggedIn
+        console.log('/inside if');
         routes = (
           <Switch>
+            {/* <Redirect from='/' to='/home' /> */}
           <Route path="/home" component={HomePage} />
           <Route path="/" exact component={LandingPage} />
           <Route path="/signup" component={Auth} />
