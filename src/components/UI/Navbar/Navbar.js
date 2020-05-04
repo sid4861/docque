@@ -7,6 +7,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import classes from './Navbar.module.css';
 import LogoImage from '../../../assets/images/doctor-emoji-png-11-transparent.png';
+import Notifications from '../../../containers/Notifications/Notifications.js';
+
 const NavbarComponent = (props) => {
     return (
 
@@ -24,7 +26,7 @@ const NavbarComponent = (props) => {
                 <Nav className="ml-auto">
                     <Button href="/add/question" variant="outline-success"  style={{margin:'10px'}} >Add Question</Button>
                     <Button href="/logout" variant="outline-success" style={{margin:'10px'}}  >Logout</Button>
-
+                    <Notifications />
                 </Nav>
 
             </Navbar.Collapse>
