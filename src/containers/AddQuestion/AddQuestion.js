@@ -30,7 +30,7 @@ class AddQuestion extends Component {
         }
     };
 
-    onClickHandler = (event) => {
+    onTagClickHandler = (event) => {
         this.setState({
             ...this.state,
             tag: event.target.text
@@ -68,9 +68,24 @@ class AddQuestion extends Component {
                     <FormControl value={this.state.value} onChange={(event) => {this.onChangeHandler(event, 'question')}} as="textarea" aria-label="With textarea" />
                 </InputGroup>
                 <DropdownButton variant="warning" title="Tags" style={{marginTop: '3%', marginLeft: '-46%'}} > 
-                    <Dropdown.Item id="Ophthalmology" onClick={(event) => {this.onClickHandler(event)}}>Ophthalmology</Dropdown.Item>
-                    <Dropdown.Item id="Cardiology" onClick={(event) => {this.onClickHandler(event)}} >Cardiology</Dropdown.Item>
-                    <Dropdown.Item  id="ENT" onClick={(event) => {this.onClickHandler(event)}} >ENT</Dropdown.Item>
+                <Dropdown.Item id="Ophthalmology" onClick={(event) => { this.onTagClickHandler(event) }}>Ophthalmology</Dropdown.Item>
+                                <Dropdown.Item id="Cardiology" onClick={(event) => { this.onTagClickHandler(event) }} >Cardiology</Dropdown.Item>
+                                <Dropdown.Item id="ENT" onClick={(event) => { this.onTagClickHandler(event) }} >ENT</Dropdown.Item>
+                                <Dropdown.Item id="Cosmetology" onClick={(event) => { this.onTagClickHandler(event) }} >Cosmetology</Dropdown.Item>
+                                <Dropdown.Item id="DentalSciences" onClick={(event) => { this.onTagClickHandler(event) }} >DentalSciences</Dropdown.Item>
+                                <Dropdown.Item id="Dermatology" onClick={(event) => { this.onTagClickHandler(event) }} >Dermatology</Dropdown.Item>
+                                <Dropdown.Item id="Endocrinology" onClick={(event) => { this.onTagClickHandler(event) }} >Endocrinology</Dropdown.Item>
+                                <Dropdown.Item id="Gastroenterology" onClick={(event) => { this.onTagClickHandler(event) }} >Gastroenterology</Dropdown.Item>
+                                <Dropdown.Item id="GeneralSurgery" onClick={(event) => { this.onTagClickHandler(event) }} >GeneralSurgery</Dropdown.Item>
+                                <Dropdown.Item id="Oncology" onClick={(event) => { this.onTagClickHandler(event) }} >Oncology</Dropdown.Item>
+                                <Dropdown.Item id="Nephrology" onClick={(event) => { this.onTagClickHandler(event) }} >Nephrology</Dropdown.Item>
+                                <Dropdown.Item id="Neurology" onClick={(event) => { this.onTagClickHandler(event) }} >Neurology</Dropdown.Item>
+                                <Dropdown.Item id="Gynecology" onClick={(event) => { this.onTagClickHandler(event) }} >Gynecology</Dropdown.Item>
+                                <Dropdown.Item id="Pathology" onClick={(event) => { this.onTagClickHandler(event) }} >Pathology</Dropdown.Item>
+                                <Dropdown.Item id="PlasticAndReconstructiveSurgery" onClick={(event) => { this.onTagClickHandler(event) }} >PlasticAndReconstructiveSurgery</Dropdown.Item>
+                                <Dropdown.Item id="Psychiatry" onClick={(event) => { this.onTagClickHandler(event) }} >Psychiatry</Dropdown.Item>
+                                <Dropdown.Item id="Radiology" onClick={(event) => { this.onTagClickHandler(event) }} >Radiology</Dropdown.Item>
+                                <Dropdown.Item id="Urology" onClick={(event) => { this.onTagClickHandler(event) }} >Urology</Dropdown.Item>
                 </DropdownButton>
     
                 <Button variant="warning" style={{marginTop: '3%', width:'100px'}} onClick={this.submitHandler} >ADD</Button>

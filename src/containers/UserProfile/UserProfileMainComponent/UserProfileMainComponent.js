@@ -52,6 +52,8 @@ class UserProfileMainComponent extends Component {
                 <p>Dr. {this.state.user.firstName} {this.state.user.lastName} ,{this.state.user.highestQualification} </p>
                 <p> Resides in : {this.state.user.country} </p>
                 <p> contact - {this.state.user.email} </p>
+                <br />
+                <p> Dr. {this.state.user.firstName}'s Questions </p>
             </div>);
             component = (
                 <div>
@@ -59,7 +61,7 @@ class UserProfileMainComponent extends Component {
                     <Container style={{ marginTop: '2%' }} >
                         <Row>
                             <Col><Button variant="warning" onClick={(event) => { this.onHomeSelectHandler(event) }} >Home</Button></Col>
-                            <Col><Button variant="warning" onClick={(event) => { this.onSelectHandler(event, 'questions') }} > Dr. {this.state.user.firstName}'s Questions </Button></Col>
+                            {/* <Col><Button variant="warning" onClick={(event) => { this.onSelectHandler(event, 'questions') }} > Dr. {this.state.user.firstName}'s Questions </Button></Col> */}
                             <Link to={'/'+this.props.userId + '/answers'} > <Col><Button variant="warning">Dr. {this.state.user.firstName}'s Answers</Button></Col> </Link>
                             {/* <ButtonGroup>
                                 <Col>
