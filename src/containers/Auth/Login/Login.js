@@ -55,6 +55,15 @@ class Login extends Component {
 
     };
 
+    forgotPasswordHandler = (event) => {
+        if (this.state.email !== null) {
+            this.props.onForgotPassword(this.state.email);
+        }
+        else {
+            alert('Please enter Email');
+        }
+    }
+
     render() {
         let form = (
             <div>
@@ -98,6 +107,7 @@ class Login extends Component {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label className={classes.Label} >Password</Form.Label>
                         <Form.Control className={classes.Input} onChange={(event) => { this.inputChangedHandler(event, 'password') }} value={this.state.password} type="password" placeholder="Password" />
+                        <Form.Label className={classes.Label} onClick={(event) => { this.forgotPasswordHandler(event) }}>Forgot Password? Enter email and click Here</Form.Label>
                     </Form.Group>
                     <br /><br />
                     <Form.Group controlId="formBasicButton">
@@ -197,7 +207,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return ({
-        onLogin: (email, password) => { dispatch(actions.login(email, password)) }
+        onLogin: (email, password) => { dispatch(actions.login(email, password)) },
+        onForgotPassword: (email) => { dispatch(actions.forgotPassword(email)) }
     });
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
