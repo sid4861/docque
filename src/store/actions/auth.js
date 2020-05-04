@@ -60,7 +60,7 @@ export const auth = (email, password, user) => {
             axios.post(url, authData)
                 .then(res => {
                     console.log(res);
-                     user['userId'] = res.data.localId;
+                     user['userID'] = res.data.localId;
                     console.log(user);
                     dispatch(authSuccess(res.data.idToken, res.data.localId));
                     dispatch(storeUserOnSignUp(user));

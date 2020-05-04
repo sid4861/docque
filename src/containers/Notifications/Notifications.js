@@ -21,11 +21,16 @@ class Notifications extends Component {
         const queryParams = '?auth=' + this.token + '&orderBy="userID"&equalTo="' + this.userId + '"';
         axios.get('/users.json' + queryParams).then(
             response => {
-                if (response.data[Object.keys(response.data)[0]].notifications !== null && response.data[Object.keys(response.data)[0]].notifications !== undefined) {
-                    notificationsObject = response.data[Object.keys(response.data)[0]].notifications;
-                    Object.keys(notificationsObject).map(key => {
-                        notificationsArray.push({ ...notificationsObject[key], key: key });
-                    });
+
+                if('notifications' in response.data[Object.keys(response.data)[0]] ){
+
+                    if (response.data[Object.keys(response.data)[0]].notifications !== null && response.data[Object.keys(response.data)[0]].notifications !== undefined) {
+                        notificationsObject = response.data[Object.keys(response.data)[0]].notifications;
+                        Object.keys(notificationsObject).map(key => {
+                            notificationsArray.push({ ...notificationsObject[key], key: key });
+                        });
+                    }
+                    
                 }
 
                 this.setState({
