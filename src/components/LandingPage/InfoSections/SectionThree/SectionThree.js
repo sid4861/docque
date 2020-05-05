@@ -3,9 +3,9 @@ import classes from './SectionThree.module.css';
 import {Link} from 'react-router-dom';
 const SectionThree = (props) => {
     return (
-        <div>
+        <div className="flex-column justify-content-center">
             <hr className={classes.Divider} />
-            <div className={classes.SectionThree}>“The important thing is not to stop questioning.” <br /> Albert Einstein </div>
+            <p className={classes.SectionThree}>“The important thing is not to stop questioning.” <br /> Albert Einstein </p>
             {/* <button className={classes.ButtonCreate}>Create Account</button> */}
             <Link className={classes.ButtonCreate} to='/signup' >Create Account</Link>
         </div>

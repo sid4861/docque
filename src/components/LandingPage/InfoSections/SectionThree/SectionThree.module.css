@@ -1,20 +1,20 @@
 .Divider{
-    position: absolute;
+    /* position: absolute; */
 width: 356px;
 height: 10px;
-left: 43%;
-top: 220%;
+/* left: 43%; */
+/* top: 220%; */
 
 background-color: #FBAB7E;
 border-radius: 10px;
 }
 
 .SectionThree{
-    position: absolute;
-width: 501px;
-height: 60px;
-left: 39%;
-top: 230%;
+    /* position: absolute; */
+/* width: 501px;
+height: 60px; */
+/* left: 39%; */
+/* top: 230%; */
 
 font-family: Roboto;
 font-style: normal;
@@ -29,11 +29,11 @@ color: #000000;
 }
 
 .ButtonCreate{
-    position: absolute;
+    /* position: absolute; */
     width: 256px;
     height: 49px;
-left: 46%;
-top: 245%;
+/* left: 46%; */
+/* top: 245%; */
 color: white;
 background: #FBAB7E;
 border: 2px solid #FFFFFF;
@@ -44,7 +44,7 @@ font-style: normal;
 font-weight: normal;
 font-size: 20px;
 line-height: 23px;
-
+padding: 10px;
 color: #FFFFFF;
 
 text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);

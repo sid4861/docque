@@ -6,14 +6,14 @@ import SectionThree from './InfoSections/SectionThree/SectionThree.js';
 
 const LandingPage = (props) => {
     return (
-        <div>
+        <React.Fragment>
 
             <JumbotronHeader />
-            <SectionOne />
+            {/* <SectionOne /> */}
             <SectionTwo />
             <SectionThree />
 
-        </div>
+        </React.Fragment>
     );
 }
 
