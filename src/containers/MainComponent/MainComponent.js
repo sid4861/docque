@@ -111,7 +111,7 @@ class MainComponent extends Component {
                                 <Dropdown.Item id="Dermatology" onClick={(event) => { this.onTagClickHandler(event) }} >Dermatology</Dropdown.Item>
                                 <Dropdown.Item id="Endocrinology" onClick={(event) => { this.onTagClickHandler(event) }} >Endocrinology</Dropdown.Item>
                                 <Dropdown.Item id="Gastroenterology" onClick={(event) => { this.onTagClickHandler(event) }} >Gastroenterology</Dropdown.Item>
-                                <Dropdown.Item id="GeneralSurgery" onClick={(event) => { this.onTagClickHandler(event) }} >GeneralSurgery</Dropdown.Item>
+                                <Dropdown.Item id="GeneralSurgery" onClick={(event) => { this.onTagClickHandler(event) }} >General Surgery</Dropdown.Item>
                                 <Dropdown.Item id="Oncology" onClick={(event) => { this.onTagClickHandler(event) }} >Oncology</Dropdown.Item>
                                 <Dropdown.Item id="Nephrology" onClick={(event) => { this.onTagClickHandler(event) }} >Nephrology</Dropdown.Item>
                                 <Dropdown.Item id="Neurology" onClick={(event) => { this.onTagClickHandler(event) }} >Neurology</Dropdown.Item>
@@ -121,6 +121,10 @@ class MainComponent extends Component {
                                 <Dropdown.Item id="Psychiatry" onClick={(event) => { this.onTagClickHandler(event) }} >Psychiatry</Dropdown.Item>
                                 <Dropdown.Item id="Radiology" onClick={(event) => { this.onTagClickHandler(event) }} >Radiology</Dropdown.Item>
                                 <Dropdown.Item id="Urology" onClick={(event) => { this.onTagClickHandler(event) }} >Urology</Dropdown.Item>
+                                <Dropdown.Item id="Pediatrics" onClick={(event) => { this.onTagClickHandler(event) }} >Pediatrics</Dropdown.Item>
+                                <Dropdown.Item id="Generalmedicine" onClick={(event) => { this.onTagClickHandler(event) }} >General Medicine</Dropdown.Item>
+                                <Dropdown.Item id="covid19" onClick={(event) => { this.onTagClickHandler(event) }} >Covid 19</Dropdown.Item>
+                                <Dropdown.Item id="icu" onClick={(event) => { this.onTagClickHandler(event) }} >ICU</Dropdown.Item>
                             </DropdownButton>
                         </Col>
                         </ButtonGroup>
